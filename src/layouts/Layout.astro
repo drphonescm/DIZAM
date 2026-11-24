@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+const { title = 'DIZAM | Estudio Contable y Asesoramiento Impositivo', description = 'Desde Córdoba, asesoramiento contable e impositivo para monotributistas, profesionales, emprendedores y empresas de todo el país.' } = Astro.props;
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://dizam.com.ar/" />
+    <link rel="icon" type="image/png" href="/favicon/dizam-favicon.png" />
+    <link rel="preload" as="image" href="/images/hero-accounting.jpg" fetchpriority="high" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+    <script is:inline>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('is-loading');
+      }
+    </script>
+  </head>
+  <body>
+    <div id="site-loader" aria-hidden="true">
+      <img src="/branding/DIZAM%20LOGO%202.png?v=3" alt="" width="1536" height="1024" fetchpriority="high" decoding="async" />
+    </div>
+    <slot />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        if (!root.classList.contains('is-loading')) return;
+        const started = performance.now();
+        let finished = false;
+        const finish = () => {
+          if (finished) return;
+          finished = true;
+          const delay = Math.max(0, 900 - (performance.now() - started));
+          window.setTimeout(() => {
+            root.classList.remove('is-loading');
+            root.classList.add('is-loaded');
+          }, delay);
+        };
+        if (document.readyState === 'complete') finish();
+        else window.addEventListener('load', finish, { once: true });
+        window.setTimeout(finish, 5000);
+      })();
+    </script>
+  </body>
+</html>

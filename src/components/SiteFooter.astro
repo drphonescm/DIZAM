@@ -1,0 +1,57 @@
+---
+import BrandLogo from './BrandLogo.astro';
+import { serviceCatalog } from '../data/services';
+import { studio } from '../data/studio';
+
+interface Props {
+  id?: string;
+}
+
+const { id } = Astro.props;
+const onServicesPage = Astro.url.pathname.replace(/\/+$/, '') === '/servicios';
+---
+
+<footer id={id} class="site-footer relative isolate w-full bg-[var(--white)] text-[var(--petrol)]">
+  <div class="site-footer-inner relative z-10 mx-auto flex min-h-[58svh] w-full max-w-[1120px] flex-col justify-between px-6 py-8 sm:py-10 lg:px-10 lg:py-14">
+    <div class="site-footer-grid grid gap-10 md:grid-cols-2 lg:grid-cols-[1.05fr_.75fr_1.1fr] lg:gap-12">
+      <div class="flex flex-col items-start gap-5">
+        <BrandLogo variant="full" class="max-w-[12rem] sm:max-w-[17rem]" />
+        <p class="max-w-sm text-sm leading-6 text-[var(--muted)]">Impuestos y servicios contables para personas, profesionales y empresas.</p>
+      </div>
+
+      <div>
+        <h2 class="display text-xl font-semibold text-[var(--petrol)]">Servicios</h2>
+        <ul class="mt-5 grid gap-3 text-sm text-[var(--muted)]">
+          {serviceCatalog.map((service) => (
+            <li>
+              <a class="group inline-flex items-center gap-2 transition-colors hover:text-[var(--petrol)]" href={onServicesPage ? `#${service.id}` : `/servicios#${service.id}`}>
+                <span class="h-px w-3 bg-[var(--gold)] transition-all group-hover:w-5"></span>
+                {service.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="border border-[var(--border)] bg-[var(--ivory)] p-5 sm:p-7">
+        <h2 class="display text-2xl font-semibold leading-tight text-[var(--petrol)]">¿Hablamos de tu actividad?</h2>
+        <p class="mt-3 text-sm leading-6 text-[var(--muted)]">Desde Córdoba, atendemos consultas de todo el país por altas, bajas, Monotributo o IVA.</p>
+        {studio.contact.whatsapp ? (
+          <>
+            <a class="mt-5 inline-block text-sm font-semibold text-[var(--petrol)] underline decoration-[var(--gold)] underline-offset-4" href={studio.contact.whatsapp} target="_blank" rel="noreferrer">{studio.contact.phone}</a>
+            <a href={studio.contact.whatsapp} target="_blank" rel="noreferrer" class="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-3 bg-[var(--petrol)] px-5 py-3 text-center text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--deep)]">Escribinos por WhatsApp <span aria-hidden="true">&#8599;</span></a>
+          </>
+        ) : (
+          <p class="mt-5 border-l-2 border-[var(--gold)] pl-3 text-sm leading-6 text-[var(--muted)]">WhatsApp está en modo demostración; no se envían mensajes.</p>
+        )}
+      </div>
+    </div>
+
+    <div class="site-footer-bottom mt-10 grid grid-cols-1 items-center gap-5 border-t border-[var(--border)] pt-5 text-xs text-[var(--muted)] sm:grid-cols-2">
+      <span class="justify-self-start">&#169; {new Date().getFullYear()} DIZAM Estudio Contable</span>
+      <a class="justify-self-end" href="https://wa.me/5493542481966" target="_blank" rel="noreferrer" aria-label="BEHHAC LABS por WhatsApp">
+        <img src="/branding/behhac-labs.png" alt="made by BEHHAC LABS" width="420" height="100" loading="lazy" decoding="async" class="w-44 object-contain brightness-0" />
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root { --petrol:#003638; --deep:#002528; --gold:#c8a15b; --ivory:#f5f1e8; --white:#fbfaf7; --graphite:#20282a; --muted:#5e7c76; --border:#e4e8e2; }
+@theme { --font-display: 'Manrope', sans-serif; --font-body: 'Inter', sans-serif; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-snap-type:y proximity; }
+body { margin:0; background:var(--white); color:var(--graphite); font-family:Inter, sans-serif; overflow-x:hidden; }
+section { scroll-snap-align:start; }
+a, button { -webkit-tap-highlight-color:transparent; }
+:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
+.eyebrow { color:var(--gold); font:600 .68rem/1.2 Inter,sans-serif; letter-spacing:.18em; text-transform:uppercase; }
+.display { font-family:Manrope,sans-serif; letter-spacing:-.055em; }
+.hero-content { position:relative; z-index:2; width:100%; margin:0; padding:4rem 1rem; }
+#inicio::before { content:''; position:absolute; inset:0 0 0 auto; z-index:0; width:min(70%,1000px); pointer-events:none; background:url('/images/hero-accounting.jpg') center 48%/cover no-repeat; -webkit-mask-image:linear-gradient(to left,#000 0%,#000 42%,transparent 100%); mask-image:linear-gradient(to left,#000 0%,#000 42%,transparent 100%); }
+#site-loader { position:fixed; inset:0; z-index:100; display:grid; place-items:center; background:var(--white); opacity:0; visibility:hidden; transition:opacity .45s ease,visibility 0s linear .45s; }
+#site-loader img { display:block; width:min(19rem,72vw); height:auto; object-fit:contain; animation:logo-pulse 1.05s ease-in-out infinite; }
+html.is-loading body { overflow:hidden; }
+html.is-loading #site-loader { opacity:1; visibility:visible; transition-delay:0s; }
+html.is-loading #inicio::before { clip-path:inset(0 0 0 100%); }
+html.is-loading #inicio .hero-content { opacity:0; }
+html.is-loaded #site-loader { opacity:0; visibility:hidden; }
+html.is-loaded #inicio::before { animation:hero-photo-wipe 1.05s cubic-bezier(.22,.72,.2,1) both; }
+html.is-loaded #inicio .hero-content { animation:hero-copy-arrive .5s ease-out 1.05s both; }
+@keyframes logo-pulse { 0%,100% { transform:scale(.97); opacity:.86; } 50% { transform:scale(1.025); opacity:1; } }
+@keyframes hero-photo-wipe { from { clip-path:inset(0 0 0 100%); } to { clip-path:inset(0); } }
+@keyframes hero-copy-arrive { from { opacity:0; } to { opacity:1; } }
+.grid-line { background-image:linear-gradient(to right, transparent calc(100% - 1px), rgba(0,54,56,.08) calc(100% - 1px)); background-size:25% 100%; }
+.grain::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.035; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E"); mix-blend-mode:multiply; }
+.reveal { opacity:0; transform:translateY(18px); }
+.site-footer::before { content:''; position:absolute; inset:0; pointer-events:none; opacity:.36; background-image:linear-gradient(to right,transparent calc(100% - 1px),rgba(0,54,56,.07) calc(100% - 1px)); background-size:25% 100%; mask-image:linear-gradient(to bottom,#000 0%,transparent 95%); }
+@media (max-width: 767px) {
+  .grid-line { background-size:50% 100%; }
+  #inicio::before { width:100%; opacity:.24; background-position:42% center; -webkit-mask-image:linear-gradient(to left,#000 0%,rgba(0,0,0,.58) 48%,transparent 100%); mask-image:linear-gradient(to left,#000 0%,rgba(0,0,0,.58) 48%,transparent 100%); }
+  #inicio h1 { font-size:clamp(2.25rem,10.5vw,3.25rem); }
+  #inicio .reveal a { padding:.75rem 1rem; font-size:.65rem; }
+  .site-footer { min-height:auto; }
+  .site-footer-inner { min-height:auto; }
+  .site-footer-grid { gap:1.5rem; }
+  .site-footer-grid > * { text-align:center; }
+  .site-footer-grid > :first-child { align-items:center; }
+  .site-footer-grid > :nth-child(2) ul { justify-items:center; }
+  .site-footer-bottom { grid-template-columns:1fr; }
+  .site-footer-bottom > span,
+  .site-footer-bottom > a { justify-self:center; }
+  .site-footer-bottom > a img { width:min(11rem,40vw); }
+}
+@media (min-width: 768px) and (max-width: 1099px) { #inicio::before { width:70%; opacity:.82; } }
+@media (min-width: 1100px) and (min-height: 800px) {
+  html { scroll-snap-type:y mandatory; }
+  main { width:100%; }
+  main > section { height:100svh; min-height:100svh; max-height:100svh; overflow:hidden; display:flex; align-items:center; box-sizing:border-box; }
+  main > section > div:not(.grid-line) { width:100%; position:relative; z-index:1; }
+  #inicio { justify-content:flex-start; }
+  #inicio > .hero-content { position:absolute; z-index:2; top:50%; left:clamp(2rem,8vw,9rem); width:min(68vw,820px); max-width:none; margin:0; padding:0; transform:translateY(-50%); }
+  #inicio h1 { font-size:clamp(3.25rem,6.2vw,6.2rem); }
+  main > #servicios, main > #confianza, main > #estudio, main > #contacto { padding-top:6.5rem!important; padding-bottom:3.5rem!important; }
+  main > #servicios { padding-top:5rem!important; padding-bottom:2.5rem!important; }
+  #servicios .service-card { padding:1.25rem!important; }
+  #servicios .service-card > div:first-child { margin-bottom:1.25rem; }
+  #servicios .service-card h3 { font-size:1.25rem; }
+  #servicios .service-card p { min-height:0; margin-top:.4rem; line-height:1.35; }
+  #servicios .service-card details { margin-top:.8rem; padding-top:.7rem; }
+  #servicios .service-card ul { margin-top:.6rem; gap:.2rem; }
+  #servicios > div > div:last-child { margin-top:2rem; }
+  #confianza > div, #estudio > div, main > #contacto > div { max-height:calc(100svh - 7rem); }
+  main > #contacto > div { align-self:flex-end; }
+  #contacto .site-footer { max-height:none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } #site-loader { display:none!important; } #inicio::before { clip-path:none!important; } #inicio .hero-content { opacity:1!important; } .reveal { opacity:1; transform:none; } }

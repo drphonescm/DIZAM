@@ -1,0 +1,25 @@
+---
+import { studio } from '../data/studio';
+import { getServiceWhatsAppHref, type ServiceDefinition } from '../data/services';
+
+interface Props {
+  service: ServiceDefinition;
+  class?: string;
+}
+
+const { service, class: className = '' } = Astro.props;
+const href = getServiceWhatsAppHref(studio.contact.whatsapp, service.whatsappMessage);
+---
+
+{href ? (
+  <a href={href} target="_blank" rel="noreferrer" class={`inline-flex min-h-12 items-center justify-center gap-3 bg-[var(--petrol)] px-5 py-3 text-center text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--deep)] ${className}`}>
+    {service.ctaLabel}<span aria-hidden="true">&#8599;</span>
+  </a>
+) : (
+  <div class={`grid gap-2 ${className}`}>
+    <button type="button" disabled aria-disabled="true" class="inline-flex min-h-12 cursor-not-allowed items-center justify-center bg-[var(--petrol)] px-5 py-3 text-center text-xs font-bold uppercase tracking-[.12em] text-white opacity-50">
+      {service.ctaLabel}
+    </button>
+    <p class="text-xs leading-5 text-[var(--muted)]">WhatsApp está en modo demostración; no se envían mensajes.</p>
+  </div>
+)}

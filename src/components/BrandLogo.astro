@@ -1,0 +1,9 @@
+---
+type Variant = 'icon' | 'horizontal' | 'full';
+interface Props { variant?: Variant; href?: string; class?: string; eager?: boolean; }
+const { variant = 'horizontal', href = '#inicio', class: className = '', eager = false } = Astro.props;
+const assets = { icon: '/branding/DIZAM%20LOGO.png', horizontal: '/branding/DIZAM%20LOGO%201.png', full: '/branding/DIZAM%20LOGO%202.png?v=3' };
+const sizes = { icon: 'h-10 w-10', horizontal: 'h-12 w-[14rem] sm:w-[17rem]', full: 'w-full max-w-[27rem]' };
+const alt = { icon: 'Isotipo DZ de DIZAM', horizontal: 'DIZAM', full: 'DIZAM Estudio Contable' };
+---
+<a href={href} class={`inline-flex shrink-0 items-center no-underline ${className}`} aria-label={variant === 'icon' ? 'DIZAM, volver al inicio' : 'DIZAM Estudio Contable, volver al inicio'}><img src={assets[variant]} alt={alt[variant]} width={variant === 'horizontal' ? 2172 : 1536} height={variant === 'horizontal' ? 724 : 1024} class={`${sizes[variant]} object-contain`} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'} /></a>
