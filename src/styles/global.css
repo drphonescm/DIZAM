@@ -13,7 +13,7 @@ a, button { -webkit-tap-highlight-color:transparent; }
 .hero-content { position:relative; z-index:2; width:100%; margin:0; padding:4rem 1rem; }
 #inicio::before { content:''; position:absolute; inset:0; z-index:0; width:100%; pointer-events:none; background:url('/images/hero-accounting.jpg') center 48%/cover no-repeat; -webkit-mask-image:linear-gradient(130deg,transparent 24%,rgba(0,0,0,.12) 38%,#000 60%); mask-image:linear-gradient(130deg,transparent 24%,rgba(0,0,0,.12) 38%,#000 60%); }
 #site-loader { position:fixed; inset:0; z-index:100; display:grid; place-items:center; background:var(--white); opacity:0; visibility:hidden; transition:opacity .45s ease,visibility 0s linear .45s; }
-#site-loader img { display:block; width:min(19rem,72vw); height:auto; object-fit:contain; animation:logo-pulse 1.05s ease-in-out infinite; }
+#site-loader img { display:block; width:min(28rem,82vw); height:auto; object-fit:contain; animation:logo-pulse 1.05s ease-in-out infinite; }
 html.is-loading body { overflow:hidden; }
 html.is-loading #site-loader { opacity:1; visibility:visible; transition-delay:0s; }
 html.is-loading #inicio::before { clip-path:circle(0 at 100% 100%); }
