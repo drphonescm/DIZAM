@@ -1,0 +1,115 @@
+---
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { monotributoAreas } from '../data/services';
+import { getServiceWhatsAppHref, serviceCatalog } from '../data/services';
+import { studio } from '../data/studio';
+const process = [
+  { number: '01', title: 'Conocemos tu actividad', text: 'Relevamos tu situación y el contexto de tu actividad.' },
+  { number: '02', title: 'Controlamos tu situación fiscal', text: 'Damos seguimiento a obligaciones, vencimientos y evolución.' },
+  { number: '03', title: 'Anticipamos alertas y vencimientos', text: 'Identificamos los temas que requieren atención y próximos pasos.' },
+  { number: '04', title: 'Te informamos y asesoramos', text: 'Te explicamos el estado y te acompañamos en las gestiones necesarias.' },
+];
+const whatsappHref = getServiceWhatsAppHref(studio.contact.whatsapp, serviceCatalog[0].whatsappMessage);
+---
+
+<Layout
+  title="Gestión Integral del Monotributo | Grupo Norte"
+  description="Seguimiento, control y asesoramiento profesional para ordenar tus obligaciones de Monotributo durante todo el año."
+>
+  <Header />
+  <main class="long-form-page bg-[var(--color-background)]">
+    <div class="mx-auto max-w-[1120px] px-6 pt-28 lg:px-10 lg:pt-36">
+      <nav class="flex flex-wrap items-center gap-2 text-xs text-[var(--color-text-muted)]" aria-label="Ruta de navegación">
+        <a class="transition-colors hover:text-[var(--color-primary)]" href="/">Inicio</a><span aria-hidden="true">/</span><a class="transition-colors hover:text-[var(--color-primary)]" href="/servicios">Servicios</a><span aria-hidden="true">/</span><span class="font-semibold text-[var(--color-primary)]">Gestión Integral del Monotributo</span>
+      </nav>
+    </div>
+
+    <section class="px-6 pb-20 pt-10 lg:px-10 lg:pb-28 lg:pt-14">
+      <div class="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+        <div>
+          <p class="eyebrow">SERVICIO PRINCIPAL · GRUPO NORTE</p>
+          <h1 class="display mt-5 text-4xl font-semibold leading-[1.04] text-[var(--color-primary)] sm:text-5xl lg:text-6xl">Gestión Integral<br class="hidden sm:block" /> del Monotributo.</h1>
+          <p class="mt-6 max-w-xl text-lg leading-8 text-[var(--color-text-muted)]">Un servicio continuo para que tengas tus obligaciones ordenadas y sepas qué requiere atención en cada etapa del año.</p>
+          <p class="mt-4 max-w-xl text-base leading-7 text-[var(--color-text-muted)]">Revisamos facturación, vencimientos, categoría, deudas y comunicaciones de ARCA, con orientación clara y seguimiento profesional.</p>
+          <a class="mt-8 inline-flex min-h-12 items-center gap-3 bg-[var(--color-primary)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--color-secondary)]" href={whatsappHref ?? '/#contacto'} target={whatsappHref ? '_blank' : undefined} rel={whatsappHref ? 'noreferrer' : undefined}>Consultar por el servicio <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="relative overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)] p-5 sm:p-8">
+          <img src="/images/accounting-workspace.jpg" alt="Escritorio de trabajo con documentación contable" width="1200" height="800" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+          <div class="relative border border-white/80 bg-white/95 p-6 shadow-sm sm:p-8">
+            <p class="eyebrow">UN ÚNICO SERVICIO</p>
+            <h2 class="display mt-3 text-3xl font-semibold leading-tight text-[var(--color-primary)]">Una gestión que te acompaña.</h2>
+            <div class="mt-6 grid gap-3">
+              {['Facturación y categoría', 'Vencimientos y obligaciones', 'ARCA y próximos pasos'].map((item, i) => <div class="flex items-center gap-3 border-t border-[var(--color-border)] pt-3 text-sm text-[var(--color-text)]"><span class="text-xs font-bold text-[var(--color-accent)]">0{i + 1}</span>{item}<span class="ml-auto text-[var(--color-secondary)]" aria-hidden="true">✓</span></div>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="incluye" class="bg-[var(--color-surface)] px-6 py-20 lg:px-10 lg:py-28">
+      <div class="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
+        <div class="lg:sticky lg:top-32 lg:self-start">
+          <p class="eyebrow">UN ÚNICO SERVICIO INTEGRAL</p>
+          <h2 class="display mt-4 text-4xl font-semibold leading-tight text-[var(--color-primary)] sm:text-5xl">Todo tu Monotributo, acompañado.</h2>
+          <p class="mt-5 text-base leading-7 text-[var(--color-text-muted)]">Estas seis áreas forman parte del mismo servicio continuo.</p>
+        </div>
+        <div class="divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+          {monotributoAreas.map((area) => <article class="grid gap-4 py-7 sm:grid-cols-[3.5rem_1fr] sm:gap-6"><span class="pt-1 text-xs font-semibold tracking-[.14em] text-[var(--color-accent)]">{area.number}</span><div><h3 class="display text-2xl font-semibold leading-snug text-[var(--color-primary)]">{area.title}</h3><p class="mt-3 text-base leading-7 text-[var(--color-text-muted)]">{area.description}</p></div></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 py-20 lg:px-10 lg:py-28">
+      <div class="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr]">
+        <div>
+          <p class="eyebrow">REPORTES Y ACCESO DIGITAL A TU INFORMACIÓN</p>
+          <h2 class="display mt-4 text-4xl font-semibold leading-tight text-[var(--color-primary)] sm:text-5xl">Tu situación fiscal, clara y ordenada.</h2>
+          <p class="mt-6 text-base leading-7 text-[var(--color-text-muted)]">Recibís reportes de seguimiento y acceso digital a la información de tu actividad: evolución de facturación, categoría vigente, límites, obligaciones pendientes y próximos vencimientos.</p>
+          <p class="mt-4 text-base leading-7 text-[var(--color-text-muted)]">El seguimiento también contempla deudas, planes de pago y comunicaciones de ARCA. David revisa esos datos con vos, te explica qué requiere atención y te orienta sobre los próximos pasos.</p>
+          <p class="mt-5 border-l-2 border-[var(--color-accent)] pl-4 text-sm font-semibold leading-6 text-[var(--color-primary)]">La información se comparte digitalmente como parte del acompañamiento. La modalidad de acceso se coordina con David; no se presenta aquí un portal de clientes conectado.</p>
+        </div>
+
+        <div class="overflow-hidden rounded-sm border border-[var(--color-border)] bg-white shadow-[0_16px_50px_color-mix(in_srgb,var(--color-primary)_9%,transparent)]">
+          <div class="flex flex-wrap items-center gap-3 border-b border-[var(--color-border)] bg-[var(--color-surface)] p-5 sm:p-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-primary)] text-sm font-semibold text-white" aria-hidden="true">GN</span>
+            <div class="min-w-0 flex-1"><span class="block text-[.62rem] font-semibold tracking-[.12em] text-[var(--color-text-muted)]">VISTA DE SEGUIMIENTO</span><strong class="display mt-1 block text-base text-[var(--color-primary)]">Resumen de tu Monotributo</strong></div>
+            <span class="border border-[var(--color-accent)] px-2.5 py-1 text-[.58rem] font-bold tracking-[.1em] text-[var(--color-secondary)]">EJEMPLO VISUAL</span>
+          </div>
+          <div class="grid gap-px bg-[var(--color-border)] sm:grid-cols-3">
+            {['Facturación|Evolución del período', 'Categoría|En seguimiento', 'Obligaciones|Vencimientos y estado'].map((item) => { const [label, value] = item.split('|'); return <div class="bg-white p-4"><span class="block text-xs text-[var(--color-text-muted)]">{label}</span><strong class="mt-2 block text-xs leading-5 text-[var(--color-primary)]">{value}</strong></div>; })}
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center justify-between gap-2 text-xs"><span class="font-semibold text-[var(--color-primary)]">Movimiento de facturación</span><span class="text-[var(--color-text-muted)]">Período ilustrativo</span></div>
+            <div class="mt-5 flex h-24 items-end gap-2 border-b border-l border-[var(--color-border)] px-3">
+              {[38, 53, 47, 74, 62, 88].map((height) => <span class="flex-1 bg-[var(--color-accent)]/75" style={`height:${height}%`}></span>)}
+            </div>
+            <div class="mt-2 flex justify-between px-3 text-[.58rem] font-semibold tracking-[.08em] text-[var(--color-text-muted)]"><span>JUL</span><span>AGO</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DIC</span></div>
+          </div>
+          <ul class="grid gap-3 border-t border-[var(--color-border)] p-5 text-xs sm:grid-cols-2 sm:p-6">
+            {['Próximos vencimientos', 'Comunicaciones de ARCA', 'Límites de categoría', 'Deudas y planes de pago'].map((item) => <li class="flex items-center gap-2 text-[var(--color-text-muted)]"><span class="text-[var(--color-accent)]" aria-hidden="true">✓</span>{item}</li>)}
+          </ul>
+          <p class="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 text-[.68rem] leading-5 text-[var(--color-text-muted)]">Ejemplo ilustrativo. No contiene datos reales ni representa un portal conectado. Los reportes se adaptan a la situación de cada cliente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[var(--color-surface)] px-6 py-20 lg:px-10 lg:py-28">
+      <div class="mx-auto max-w-[1120px]">
+        <div class="max-w-2xl"><p class="eyebrow">ACOMPAÑAMIENTO DURANTE TODO EL AÑO</p><h2 class="display mt-4 text-4xl font-semibold text-[var(--color-primary)] sm:text-5xl">Así te acompañamos.</h2></div>
+        <ol class="mt-10 grid gap-0 border-y border-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-4">
+          {process.map((step) => <li class="border-b border-[var(--color-border)] py-6 sm:border-r sm:px-5 lg:border-b-0"><span class="text-xs font-semibold tracking-[.14em] text-[var(--color-accent)]">{step.number}</span><h3 class="display mt-4 text-xl font-semibold leading-snug text-[var(--color-primary)]">{step.title}</h3><p class="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{step.text}</p></li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="bg-[var(--color-primary-dark)] px-6 py-20 text-white lg:px-10 lg:py-24">
+      <div class="mx-auto flex max-w-[1120px] flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+        <div><p class="eyebrow text-white/70">GESTIÓN INTEGRAL DEL MONOTRIBUTO</p><h2 class="display mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl">Tu actividad organizada.<br /><span class="text-[var(--color-accent)]">Tus obligaciones bajo control.</span></h2></div>
+        <a class="inline-flex min-h-12 shrink-0 items-center gap-3 bg-white px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-[var(--color-primary)] transition hover:bg-[var(--color-surface-muted)]" href={whatsappHref ?? '/#contacto'} target={whatsappHref ? '_blank' : undefined} rel={whatsappHref ? 'noreferrer' : undefined}>Solicitar asesoramiento <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <SiteFooter id="contacto" />
+</Layout>

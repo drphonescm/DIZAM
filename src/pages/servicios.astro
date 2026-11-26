@@ -7,62 +7,41 @@ import { serviceCatalog } from '../data/services';
 ---
 
 <Layout
-  title="Servicios contables | DIZAM Estudio Contable"
-  description="Desde Córdoba, DIZAM ofrece servicios contables para altas, bajas, Monotributo e IVA a clientes de todo el país."
+  title="Servicios | Grupo Norte"
+  description="Gestión Integral del Monotributo, servicios para Responsable Inscripto y acompañamiento para la creación de SAS."
 >
   <Header />
-  <main class="service-detail-page bg-[var(--white)] px-6 pb-16 pt-32 lg:px-10 lg:pb-24 lg:pt-40">
+  <main class="bg-[var(--color-background)] px-6 pb-20 pt-32 lg:px-10 lg:pb-28 lg:pt-40">
     <div class="mx-auto max-w-[1120px]">
-      <a href="/#servicios" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)] transition-colors hover:text-[var(--petrol)]">
-        <span aria-hidden="true">&#8592;</span> Inicio
-      </a>
+      <a href="/#servicios" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary)]"><span aria-hidden="true">←</span> Inicio</a>
       <header class="mt-8 max-w-3xl">
-        <h1 class="display text-4xl font-semibold leading-tight text-[var(--petrol)] sm:text-5xl lg:text-6xl">Servicios contables para cada etapa</h1>
-        <p class="mt-5 text-base leading-7 text-[var(--muted)]">Revisá las prestaciones de altas, bajas, Monotributo e IVA.</p>
-        <p class="mt-4 border-l-2 border-[var(--gold)] pl-4 text-sm leading-6 text-[var(--muted)]">Este catálogo está pendiente de validación final con David.</p>
+        <p class="eyebrow">GRUPO NORTE · SERVICIOS</p>
+        <h1 class="display mt-4 text-4xl font-semibold leading-tight text-[var(--color-primary)] sm:text-5xl lg:text-6xl">Acompañamiento contable e impositivo para cada etapa.</h1>
+        <p class="mt-5 text-base leading-7 text-[var(--color-text-muted)]">La Gestión Integral del Monotributo es nuestro servicio principal. También acompañamos a responsables inscriptos y a quienes están creando una SAS.</p>
       </header>
 
-      <nav class="mt-9 flex flex-wrap gap-2" aria-label="Ir a un servicio">
-        {serviceCatalog.map((service) => (
-          <a href={`#${service.id}`} class="border border-[var(--border)] px-4 py-2 text-xs font-semibold text-[var(--petrol)] transition-colors hover:border-[var(--gold)]">
-            {service.title}
-          </a>
-        ))}
-      </nav>
-
-      <div class="mt-8 grid gap-5 lg:gap-7">
-        {serviceCatalog.map((service) => (
-          <article id={service.id} class="scroll-mt-28 border border-[var(--border)] bg-[var(--white)] p-6 sm:p-8 lg:p-10">
-            <div class="grid gap-7 md:grid-cols-[minmax(0,1fr)_minmax(15rem,.55fr)] md:items-start">
+      <div class="mt-10 grid gap-5">
+        {serviceCatalog.map((service, index) => (
+          <article id={service.id} class={`scroll-mt-28 border border-[var(--color-border)] p-6 sm:p-8 lg:p-10 ${index === 0 ? 'bg-[var(--color-surface)]' : 'bg-white'}`}>
+            <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(15rem,.45fr)] md:items-center">
               <div>
-                <p class="text-xs font-semibold tracking-[.15em] text-[var(--gold)]">{service.number}</p>
-                <h2 class="display mt-3 text-3xl font-semibold leading-tight text-[var(--petrol)] sm:text-4xl">{service.title}</h2>
-                <p class="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">{service.intro}</p>
-                <h3 class="mt-7 text-xs font-bold uppercase tracking-[.12em] text-[var(--petrol)]">Prestaciones incluidas</h3>
+                <p class="text-xs font-semibold tracking-[.15em] text-[var(--color-accent)]">{index === 0 ? 'SERVICIO PRINCIPAL' : `SERVICIO COMPLEMENTARIO · 0${index + 1}`}</p>
+                <h2 class="display mt-3 text-3xl font-semibold leading-tight text-[var(--color-primary)] sm:text-4xl">{service.title}</h2>
+                <p class="mt-4 max-w-2xl text-base leading-7 text-[var(--color-text-muted)]">{service.intro}</p>
+                <h3 class="mt-6 text-xs font-bold uppercase tracking-[.12em] text-[var(--color-primary)]">Alcance del servicio</h3>
                 <ul class="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-                  {service.items.map((item) => (
-                    <li class="flex items-start gap-3 text-sm leading-6 text-[var(--muted)]">
-                      <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" class="mt-1 h-4 w-4 shrink-0 text-[var(--gold)]">
-                        <path d="m5 10 3.2 3.2L15.5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.2" />
-                      </svg>
-                      <span>{item}</span>
-                    </li>
-                  ))}
+                  {service.items.map((item) => <li class="flex items-start gap-3 text-sm leading-6 text-[var(--color-text-muted)]"><span class="mt-1 text-[var(--color-accent)]" aria-hidden="true">✓</span><span>{item}</span></li>)}
                 </ul>
+                {service.id === 'responsable-inscripto' && <p class="mt-5 border-l-2 border-[var(--color-accent)] pl-4 text-sm leading-6 text-[var(--color-text-muted)]">El alcance se define según la actividad y las obligaciones fiscales aplicables.</p>}
               </div>
-              <aside class="border-t border-[var(--border)] pt-5 md:border-l md:border-t-0 md:pl-7 md:pt-0">
-                <p class="text-sm leading-6 text-[var(--muted)]">¿Querés consultar por este servicio?</p>
-                <ServiceInquiryCTA service={service} class="mt-5 w-full" />
+              <aside class="border-t border-[var(--color-border)] pt-5 md:border-l md:border-t-0 md:pl-7 md:pt-0">
+                {service.id === 'monotributo' ? <a href="/monotributo/" class="inline-flex min-h-12 w-full items-center justify-center gap-3 bg-[var(--color-primary)] px-5 py-3 text-center text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--color-secondary)]">Ver detalle del servicio <span aria-hidden="true">→</span></a> : <><p class="text-sm leading-6 text-[var(--color-text-muted)]">¿Querés conversar sobre este servicio?</p><ServiceInquiryCTA service={service} class="mt-5 w-full" /></>}
               </aside>
             </div>
           </article>
         ))}
       </div>
-
     </div>
   </main>
-  <div class="bg-[var(--white)] px-6 lg:px-10">
-    <SiteFooter id="contacto" />
-  </div>
+  <SiteFooter id="contacto" />
 </Layout>

@@ -1,4 +1,4 @@
-export type ServiceId = 'altas' | 'bajas' | 'monotributo' | 'iva';
+export type ServiceId = 'monotributo' | 'responsable-inscripto' | 'creacion-sas';
 
 export interface ServiceDefinition {
   readonly id: ServiceId;
@@ -14,78 +14,66 @@ export interface ServiceDefinition {
 
 export const serviceCatalog = [
   {
-    id: 'altas',
-    number: '01',
-    title: 'Nuevos contribuyentes',
-    intro: 'Poné en marcha tu actividad con una inscripción ordenada y acorde a tu situación fiscal.',
-    homeDescription: 'Altas impositivas para empezar tu actividad.',
-    highlights: ['Monotributo y Autónomos', 'CUIT e impuestos'],
-    items: [
-      'Inscripción en Monotributo',
-      'Alta en el régimen de Autónomos',
-      'Trámite de alta de CUIT',
-      'Inscripción en impuestos nacionales',
-      'Alta en Ingresos Brutos',
-      'Orientación inicial según la actividad',
-    ],
-    ctaLabel: 'Consultar por un alta',
-    whatsappMessage: 'Hola, quisiera consultar por el alta de una actividad.',
-  },
-  {
-    id: 'bajas',
-    number: '02',
-    title: 'Baja de contribuyentes',
-    intro: 'Revisá los pasos para cerrar una actividad y ordenar las obligaciones relacionadas con el cese.',
-    homeDescription: 'Cierre de actividad y revisión de obligaciones pendientes.',
-    highlights: ['Bajas impositivas', 'Revisión de deuda'],
-    items: [
-      'Baja de Monotributo o Autónomos',
-      'Baja de CUIT',
-      'Cese en Ingresos Brutos',
-      'Revisión de deuda previa al cierre',
-      'Regularización de obligaciones pendientes',
-    ],
-    ctaLabel: 'Consultar por una baja',
-    whatsappMessage: 'Hola, quisiera consultar por la baja de mi actividad.',
-  },
-  {
     id: 'monotributo',
-    number: '03',
-    title: 'Planes Monotributo',
-    intro: 'Acompañamiento para revisar tu situación y dar seguimiento a las obligaciones del Monotributo.',
-    homeDescription: 'Seguimiento, recategorizaciones y gestión de obligaciones.',
-    highlights: ['Recategorizaciones', 'Deuda y planes ARCA'],
-    items: [
-      'Seguimiento mensual de la situación',
-      'Recategorizaciones',
-      'Control de facturación',
-      'Consulta del estado de deuda',
-      'Gestión de planes de pago ante ARCA',
-      'Gestión de Ingresos Brutos',
-      'Asesoramiento permanente',
-    ],
+    number: '01',
+    title: 'Gestión Integral del Monotributo',
+    intro: 'Un servicio continuo para ordenar tus obligaciones y saber qué requiere atención en cada etapa del año.',
+    homeDescription: 'Acompañamiento, seguimiento y control de tu situación fiscal durante todo el año.',
+    highlights: ['Seguimiento mensual', 'ARCA y obligaciones'],
+    items: ['Alta y configuración', 'Administración y seguimiento mensual', 'Facturación electrónica', 'Recategorizaciones', 'Gestión ante ARCA', 'Deudas y planes de pago'],
     ctaLabel: 'Consultar por Monotributo',
-    whatsappMessage: 'Hola, quisiera consultar por asesoramiento de Monotributo.',
+    whatsappMessage: 'Hola, quisiera consultar por la Gestión Integral del Monotributo.',
   },
   {
-    id: 'iva',
-    number: '04',
-    title: 'Planes para inscriptos en IVA',
-    intro: 'Asistencia contable e impositiva para responsables inscriptos y las obligaciones de su actividad.',
-    homeDescription: 'Liquidaciones y seguimiento para responsables inscriptos.',
-    highlights: ['Liquidaciones de IVA', 'Seguimiento fiscal'],
-    items: [
-      'Liquidaciones mensuales de IVA',
-      'Liquidaciones impositivas anuales',
-      'Control y seguimiento fiscal',
-      'Asesoramiento sobre obligaciones impositivas',
-      'Análisis de la situación fiscal',
-      'Planificación impositiva básica',
-    ],
-    ctaLabel: 'Consultar por IVA',
-    whatsappMessage: 'Hola, quisiera consultar por asesoramiento para responsables inscriptos en IVA.',
+    id: 'responsable-inscripto',
+    number: '02',
+    title: 'Responsable Inscripto',
+    intro: 'Acompañamiento contable e impositivo según la actividad y las obligaciones fiscales aplicables.',
+    homeDescription: 'Liquidaciones, declaraciones juradas y gestiones fiscales de acuerdo con tu actividad.',
+    highlights: ['IVA e Ingresos Brutos', 'Declaraciones juradas'],
+    items: ['IVA', 'Ingresos Brutos locales', 'Convenio Multilateral', 'Ganancias', 'Declaraciones juradas', 'Gestiones ante ARCA según corresponda'],
+    ctaLabel: 'Consultar por Responsable Inscripto',
+    whatsappMessage: 'Hola, quisiera consultar por servicios para Responsable Inscripto.',
+  },
+  {
+    id: 'creacion-sas',
+    number: '03',
+    title: 'Creación de SAS',
+    intro: 'Orientación y coordinación para organizar el proceso de constitución y puesta en funcionamiento.',
+    homeDescription: 'Asesoramiento inicial, coordinación de trámites y alta fiscal para iniciar la actividad.',
+    highlights: ['Constitución', 'Puesta en funcionamiento'],
+    items: ['Asesoramiento inicial', 'Organización del proceso de constitución', 'Coordinación de trámites', 'Alta fiscal', 'Puesta en funcionamiento'],
+    ctaLabel: 'Consultar por creación de SAS',
+    whatsappMessage: 'Hola, quisiera consultar por la creación de una SAS.',
   },
 ] as const satisfies readonly ServiceDefinition[];
+
+export const monotributoAreas = [
+  {
+    number: '01', title: 'Alta y configuración',
+    description: 'Alta inicial, elección de actividad, análisis de categoría, configuración fiscal, punto de venta, facturación electrónica y orientación sobre obligaciones.',
+  },
+  {
+    number: '02', title: 'Administración y seguimiento mensual',
+    description: 'Control de situación fiscal, vencimientos y obligaciones; revisión de categoría; análisis de evolución y seguimiento de límites de facturación.',
+  },
+  {
+    number: '03', title: 'Facturación electrónica',
+    description: 'Asesoramiento sobre comprobantes, control de comprobantes emitidos e ingresos, notas de crédito y débito, e impacto en la categoría.',
+  },
+  {
+    number: '04', title: 'Recategorizaciones',
+    description: 'Análisis previo, revisión de ingresos y parámetros, gestión de la recategorización y seguimiento posterior.',
+  },
+  {
+    number: '05', title: 'Gestión ante ARCA',
+    description: 'Control del domicilio fiscal electrónico, revisión de notificaciones, presentaciones digitales, seguimiento de trámites y respuesta a requerimientos.',
+  },
+  {
+    number: '06', title: 'Deudas y planes de pago',
+    description: 'Consulta y análisis de deuda, generación y seguimiento de planes, control de cuotas, generación y envío de VEP hasta la cancelación.',
+  },
+] as const;
 
 export function getServiceWhatsAppHref(contact: string | null, message: string): string | null {
   if (!contact) return null;

@@ -2,8 +2,8 @@
 
 ## Listo en la demo
 
-- Cinco escenas responsive, navegación, scroll snap, motion, SEO técnico base, noindex, formulario local sin envío y estructura de contenido separada.
+- Home de cinco escenas, rutas de servicios y Monotributo, scroll snap solo en home, motion con preferencia reducida, SEO técnico base, noindex y formulario local sin envío.
 
 ## Pendiente
 
-- Logo oficial, datos profesionales validados, foto, matrícula, contacto real, WhatsApp, backend/formulario, textos legales, revisión final de servicios, pruebas Lighthouse y despliegue protegido.
+- Confirmación con David de la formación académica antes de publicarla como credencial, validación final del alcance de servicios y de los datos de contacto, textos legales, definición del dominio, revisión responsive completa, pruebas Lighthouse y despliegue protegido.

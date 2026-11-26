@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = 'DIZAM | Estudio Contable y Asesoramiento Impositivo', description = 'Desde Córdoba, asesoramiento contable e impositivo para monotributistas, profesionales, emprendedores y empresas de todo el país.' } = Astro.props;
+const { title = 'Grupo Norte | Servicios Contables e Impositivos', description = 'Asesoramiento contable e impositivo para personas, profesionales, emprendedores y empresas. Conocé los servicios de Grupo Norte.' } = Astro.props;
 ---
 <!doctype html>
 <html lang="es-AR">
@@ -9,12 +9,12 @@ const { title = 'DIZAM | Estudio Contable y Asesoramiento Impositivo', descripti
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="description" content={description} />
-    <link rel="canonical" href="https://dizam.com.ar/" />
-    <link rel="icon" type="image/png" href="/favicon/dizam-favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon/grupo-norte-favicon.png" />
     <link rel="preload" as="image" href="/images/hero-accounting.jpg" fetchpriority="high" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Grupo Norte" />
     <title>{title}</title>
     <script is:inline>
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -24,7 +24,7 @@ const { title = 'DIZAM | Estudio Contable y Asesoramiento Impositivo', descripti
   </head>
   <body>
     <div id="site-loader" aria-hidden="true">
-      <img src="/branding/DIZAM%20LOGO%202.png?v=3" alt="" width="1536" height="1024" fetchpriority="high" decoding="async" />
+      <img src="/branding/grupo-norte-completo.png" alt="" width="1254" height="1254" fetchpriority="high" decoding="async" />
     </div>
     <slot />
     <script is:inline>

@@ -1,43 +1,98 @@
 ---
-import Layout from '../layouts/Layout.astro'; import Header from '../components/Header.astro'; import SiteFooter from '../components/SiteFooter.astro'; import ServiceCard from '../components/ServiceCard.astro'; import { serviceCatalog } from '../data/services'; import { studio } from '../data/studio';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { serviceCatalog } from '../data/services';
+import { studio } from '../data/studio';
+
+const monotributo = serviceCatalog[0];
+const complementaryServices = serviceCatalog.slice(1);
 ---
-<Layout><Header /><main>
-<section id="inicio" class="grain relative flex min-h-[100svh] items-center overflow-hidden bg-[var(--white)] px-6 pt-24 lg:px-10"><div class="grid-line absolute inset-y-0 left-6 right-6 opacity-60 lg:left-10 lg:right-10"></div><div class="hero-content"><div class="max-w-3xl"><h1 class="display reveal max-w-4xl text-[clamp(3.25rem,8vw,7.7rem)] font-semibold leading-[.92] text-[var(--petrol)]">Estudio contable<br />e impositivo</h1><p class="reveal mt-9 max-w-lg text-base leading-7 text-[var(--muted)]">{studio.description}</p><div class="reveal mt-10 flex flex-wrap items-center gap-4"><a href={studio.contact.whatsapp} target="_blank" rel="noreferrer" class="inline-flex items-center gap-3 bg-[var(--petrol)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--deep)]">Consultar por WhatsApp <span aria-hidden="true">↗</span></a><a href="#servicios" class="inline-flex items-center gap-3 bg-[var(--petrol)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--deep)]">Ver servicios <span aria-hidden="true">↘</span></a></div></div></div></section>
-<section id="servicios" class="bg-[var(--ivory)] px-6 py-24 lg:px-10 lg:py-32"><div class="mx-auto max-w-[1280px]"><div><h2 class="display max-w-3xl text-4xl font-semibold leading-tight text-[var(--petrol)] sm:text-6xl">Servicios contables para tu actividad</h2><p class="mt-5 max-w-xl text-base leading-7 text-[var(--muted)]">Elegí el área que necesitás resolver.</p><p class="mt-3 text-xs leading-5 text-[var(--muted)]">Prestaciones pendientes de validación final con David.</p></div><div class="mt-8 grid gap-4 md:grid-cols-2">{serviceCatalog.map(service=><ServiceCard service={service}/>)}</div><a href="/servicios" class="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-[var(--petrol)] transition-colors hover:text-[var(--gold)]">Ver el catálogo completo <span aria-hidden="true">&#8599;</span></a></div></section>
-<section id="confianza" class="bg-[var(--white)] px-6 py-24 lg:px-10 lg:py-36"><div class="mx-auto max-w-[1280px]"><div><h2 class="display max-w-3xl text-4xl font-semibold leading-tight text-[var(--petrol)] sm:text-6xl">Asesoramiento contable para tu actividad</h2><p class="mt-7 max-w-lg text-base leading-7 text-[var(--muted)]">Servicios contables e impositivos para personas, profesionales y empresas.</p><div class="mt-16 grid gap-0 border-t border-[var(--border)]">{[['01','Claridad','Información comprensible para tomar decisiones.'],['02','Organización','Gestión ordenada y seguimiento de obligaciones.'],['03','Acompañamiento','Asesoramiento pensado para cada actividad.']].map(([n,t,d])=><div class="grid gap-4 border-b border-[var(--border)] py-7 sm:grid-cols-[70px_1fr_1fr] sm:items-center"><span class="text-xs font-semibold tracking-[.15em] text-[var(--gold)]">{n}</span><h3 class="display text-2xl font-semibold text-[var(--petrol)]">{t}</h3><p class="text-sm leading-6 text-[var(--muted)]">{d}</p></div>)}</div></div></div></section>
-<section id="estudio" class="bg-[var(--ivory)] px-6 py-24 lg:px-10 lg:py-32">
-  <div class="mx-auto max-w-[1120px]">
-    <h2 class="display mx-auto max-w-3xl text-center text-4xl font-semibold leading-tight text-[var(--petrol)] sm:text-5xl">Conocé el estudio</h2>
-    <div class="mt-8 grid items-center gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-12">
-      <div class="max-w-xl">
-        <p class="text-base leading-7 text-[var(--muted)]">Desde Córdoba, DIZAM brinda asesoramiento contable e impositivo a personas, profesionales y empresas de todo el país.</p>
-        <p class="mt-5 text-base leading-7 text-[var(--muted)]">Podés consultar por el inicio o cierre de una actividad, Monotributo o tus obligaciones de IVA.</p>
-        <p class="display mt-8 text-2xl font-semibold text-[var(--petrol)]">{studio.professional}</p>
-        <p class="mt-1 text-sm text-[var(--muted)]">Profesional a cargo de DIZAM Estudio Contable</p>
+<Layout>
+  <Header />
+  <main class="home-main">
+    <section id="inicio" class="grain relative flex min-h-[100svh] items-center overflow-hidden bg-[var(--color-background)] px-6 pt-24 lg:px-10">
+      <div class="grid-line absolute inset-y-0 left-6 right-6 opacity-60 lg:left-10 lg:right-10"></div>
+      <div class="hero-content">
+        <div class="max-w-3xl">
+          <p class="eyebrow reveal mb-5">GRUPO NORTE · SERVICIOS CONTABLES E IMPOSITIVOS</p>
+          <h1 class="display reveal max-w-4xl text-[clamp(3rem,7.2vw,6.8rem)] font-semibold leading-[.98] text-[var(--color-primary)]">Servicios contables para tu actividad.</h1>
+          <p class="reveal mt-8 max-w-xl text-lg leading-8 text-[var(--color-text-muted)]">Gestionamos tus obligaciones contables e impositivas para que puedas enfocarte en tu actividad.</p>
+          <p class="reveal mt-3 max-w-lg text-sm leading-6 text-[var(--color-text-muted)]">Atención profesional para monotributistas, con seguimiento, control y reportes claros sobre tu situación fiscal.</p>
+          <div class="reveal mt-9 flex flex-wrap items-center gap-4">
+            <a href="#servicios" class="inline-flex min-h-12 items-center gap-3 bg-[var(--color-primary)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--color-primary-dark)]">Conocé nuestros servicios <span aria-hidden="true">→</span></a>
+            <a href={studio.contact.whatsapp} target="_blank" rel="noreferrer" class="inline-flex min-h-12 items-center gap-3 border border-[var(--color-primary)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-[var(--color-primary)] transition hover:bg-[var(--color-surface)]">Hablemos <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
-      <div class="relative aspect-[4/3] overflow-hidden border border-[var(--gold)]/50 bg-[var(--white)]">
-        <img src="/images/studio-accounting.png" alt="Escritorio de trabajo contable con documentación, calculadora y café" width="1024" height="768" loading="lazy" decoding="async" class="h-full w-full object-cover" />
-        <span class="pointer-events-none absolute inset-4 border border-white/60"></span>
+    </section>
+
+    <section id="monotributo" class="home-featured bg-[var(--color-surface)] px-6 py-16 lg:px-10">
+      <div class="mx-auto grid w-full max-w-[1280px] items-center gap-8 lg:grid-cols-[.85fr_1.15fr] lg:gap-16">
+        <div class="reveal">
+          <p class="eyebrow">SERVICIO PRINCIPAL · 01</p>
+          <h2 class="display mt-5 text-4xl font-semibold leading-tight text-[var(--color-primary)] sm:text-5xl lg:text-6xl">Gestión Integral del Monotributo</h2>
+          <p class="mt-5 max-w-xl text-lg leading-8 text-[var(--color-text-muted)]">Acompañamiento, seguimiento y control durante todo el año. Una gestión continua para que sepas qué requiere atención en cada etapa.</p>
+          <a href="/monotributo/" class="mt-8 inline-flex min-h-12 items-center gap-3 bg-[var(--color-primary)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--color-secondary)]">Conocé el servicio <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          {monotributo.items.map((item, index) => <div class="reveal flex min-h-24 items-center gap-4 border border-[var(--color-border)] bg-white p-5"><span class="text-xs font-semibold tracking-[.12em] text-[var(--color-accent)]">{String(index + 1).padStart(2, '0')}</span><span class="text-sm font-semibold leading-6 text-[var(--color-primary)]">{item}</span></div>)}
+        </div>
       </div>
-    </div>
-    <div class="mt-8 grid gap-3 sm:grid-cols-3">
-      <div class="flex items-center gap-4 rounded-xl border border-[var(--border)] bg-[var(--white)] p-5 shadow-[0_2px_8px_rgba(0,54,56,.04)]">
-        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[var(--ivory)] text-[var(--petrol)]"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><path d="M4 18V6m0 12h16M7 14l4-4 3 2 5-6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-        <span><strong class="display block text-2xl font-semibold leading-none text-[var(--petrol)]">+5 años</strong><span class="mt-2 block text-[.65rem] font-semibold uppercase tracking-[.12em] text-[var(--muted)]">Trayectoria</span></span>
+    </section>
+
+    <section id="servicios" class="home-complementary bg-[var(--color-background)] px-6 py-16 lg:px-10">
+      <div class="mx-auto w-full max-w-[1280px]">
+        <div class="reveal max-w-3xl">
+          <p class="eyebrow">OTROS SERVICIOS CONTABLES E IMPOSITIVOS</p>
+          <h2 class="display mt-4 text-4xl font-semibold leading-tight text-[var(--color-primary)] sm:text-5xl">También podemos acompañarte en otras etapas.</h2>
+        </div>
+        <div class="mt-8 grid gap-5 lg:grid-cols-2">
+          {complementaryServices.map((service) => <ServiceCard service={service} href={`/servicios#${service.id}`} />)}
+        </div>
+        <a href="/servicios" class="mt-6 inline-flex min-h-11 items-center text-xs font-bold uppercase tracking-[.12em] text-[var(--color-primary)] transition-colors hover:text-[var(--color-secondary)]">Ver todos los servicios <span class="ml-2" aria-hidden="true">↗</span></a>
       </div>
-      <div class="flex items-center gap-4 rounded-xl border border-[var(--border)] bg-[var(--white)] p-5 shadow-[0_2px_8px_rgba(0,54,56,.04)]">
-        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[var(--ivory)] text-[var(--petrol)]"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20m6-9a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.5a4 4 0 0 1 0 7.5m1 4h1.5a3.5 3.5 0 0 1 3.5 3.5V20" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-        <span><strong class="display block text-2xl font-semibold leading-none text-[var(--petrol)]">+100</strong><span class="mt-2 block text-[.65rem] font-semibold uppercase tracking-[.12em] text-[var(--muted)]">Clientes asesorados</span></span>
+    </section>
+
+    <section id="estudio" class="home-about bg-[var(--color-surface)] px-6 py-14 lg:px-10">
+      <div class="mx-auto grid w-full max-w-[1120px] items-center gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-12">
+        <div class="reveal max-w-xl">
+          <p class="eyebrow">SOBRE DAVID</p>
+          <h2 class="display mt-4 text-4xl font-semibold leading-tight text-[var(--color-primary)] sm:text-5xl">David Díaz</h2>
+          <p class="mt-5 text-base leading-7 text-[var(--color-text-muted)]">David acompaña el seguimiento fiscal y ayuda a entender las obligaciones y próximos pasos, con atención personalizada y comunicación directa.</p>
+          <p class="mt-4 text-sm leading-6 text-[var(--color-text-muted)]">Atención personalizada, comunicación directa y seguimiento profesional.</p>
+          <div class="mt-5 border-l-2 border-[var(--color-accent)] pl-4">
+            <p class="text-xs font-bold uppercase tracking-[.1em] text-[var(--color-primary)]">Formación informada · pendiente de confirmación con David</p>
+            <p class="mt-2 text-sm text-[var(--color-text-muted)]">{studio.education}</p>
+            <a class="mt-1 inline-flex text-sm text-[var(--color-secondary)] underline underline-offset-4" href={studio.educationUrl} target="_blank" rel="noopener noreferrer">{studio.educationInstitution} <span class="ml-1" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="reveal relative aspect-[4/3] overflow-hidden border border-[var(--color-border)] bg-white">
+          <img src="/images/studio-accounting.png" alt="Escritorio de trabajo contable con documentación, calculadora y café" width="1024" height="768" loading="lazy" decoding="async" class="h-full w-full object-cover" />
+          <span class="pointer-events-none absolute inset-4 border border-white/60"></span>
+        </div>
       </div>
-      <div class="flex items-center gap-4 rounded-xl border border-[var(--border)] bg-[var(--white)] p-5 shadow-[0_2px_8px_rgba(0,54,56,.04)]">
-        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[var(--ivory)] text-[var(--petrol)]"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><rect x="4" y="7" width="16" height="13" rx="1"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2m-7 4v5m6-5v5" stroke-linecap="round" /></svg></span>
-        <span><strong class="display block text-2xl font-semibold leading-none text-[var(--petrol)]">+300</strong><span class="mt-2 block text-[.65rem] font-semibold uppercase tracking-[.12em] text-[var(--muted)]">Casos resueltos</span></span>
+    </section>
+
+    <section id="contacto" class="home-closing relative flex items-center overflow-hidden bg-[var(--color-primary-dark)] px-6 py-16 text-white lg:px-10">
+      <div class="mx-auto w-full max-w-[1120px]">
+        <p class="eyebrow text-white/70">GESTIÓN INTEGRAL DEL MONOTRIBUTO</p>
+        <h2 class="display mt-5 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">Tu actividad organizada.<br /><em class="not-italic text-[var(--color-accent)]">Tus obligaciones bajo control.</em></h2>
+        <a href="/monotributo/" class="mt-8 inline-flex min-h-12 items-center gap-3 bg-white px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-[var(--color-primary)] transition hover:bg-[var(--color-surface-muted)]">Conocé el servicio integral <span aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </div>
-</section>
-<section id="contacto" class="relative overflow-hidden bg-[var(--white)]">
-  <div class="mx-auto w-full px-6 lg:px-10">
-    <SiteFooter />
-  </div>
-</section></main><script>import { gsap } from 'gsap'; import { ScrollTrigger } from 'gsap/ScrollTrigger'; gsap.registerPlugin(ScrollTrigger); const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(!reduce){gsap.utils.toArray('.reveal').forEach((el:any,i:number)=>gsap.to(el,{opacity:1,y:0,duration:.7,delay:i*.08,ease:'power2.out'}));gsap.utils.toArray('section:not(:first-child) .eyebrow, section:not(:first-child) h2, section:not(:first-child) .service-card').forEach((el:any)=>gsap.from(el,{scrollTrigger:{trigger:el,start:'top 85%'},opacity:0,y:20,duration:.65,ease:'power2.out'}));}let arrowScrollLocked=false;window.addEventListener("keydown",(event:KeyboardEvent)=>{if(!matchMedia("(min-width: 1100px) and (min-height: 900px)").matches||(event.key!=="ArrowDown"&&event.key!=="ArrowUp"))return;const active=document.activeElement;if(active&&(/^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)||active.getAttribute("contenteditable")=="true"))return;event.preventDefault();if(arrowScrollLocked||event.repeat)return;const sections=Array.from(document.querySelectorAll<HTMLElement>("main > section"));if(!sections.length)return;const current=sections.reduce((best,section,index)=>Math.abs(section.getBoundingClientRect().top)<Math.abs(sections[best].getBoundingClientRect().top)?index:best,0);const next=current+(event.key==="ArrowDown"?1:-1);if(next<0||next>=sections.length)return;arrowScrollLocked=true;window.setTimeout(()=>{arrowScrollLocked=false;},750);sections[next].scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});});</script></Layout>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    gsap.utils.toArray('.reveal').forEach((el: any, i: number) => gsap.to(el, { opacity: 1, y: 0, duration: .7, delay: (i % 4) * .07, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } }));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => { (el as HTMLElement).style.opacity = '1'; (el as HTMLElement).style.transform = 'none'; });
+  }
+</script>

@@ -9,14 +9,14 @@ interface Props {
 const { service, href = `/servicios#${service.id}` } = Astro.props;
 ---
 
-<article class="service-card group flex h-full flex-col border border-[var(--border)] bg-[var(--white)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[var(--gold)] hover:shadow-[0_18px_45px_rgba(0,54,56,.08)] sm:p-6">
-  <p class="mb-3 text-xs font-semibold tracking-[.15em] text-[var(--gold)]">{service.number}</p>
-  <h3 class="display text-2xl font-semibold text-[var(--petrol)]">{service.title}</h3>
-  <p class="mt-2 text-sm leading-6 text-[var(--muted)]">{service.homeDescription}</p>
-  <ul class="mt-4 grid gap-2 border-t border-[var(--border)] pt-4 text-sm leading-5 text-[var(--muted)]">
+<article class="service-card group flex h-full flex-col border border-[var(--color-border)] bg-[var(--color-background)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)] hover:shadow-[0_18px_45px_color-mix(in_srgb,var(--color-primary)_8%,transparent)] sm:p-6">
+  <p class="mb-3 text-xs font-semibold tracking-[.15em] text-[var(--color-accent)]">{service.number}</p>
+  <h3 class="display text-2xl font-semibold text-[var(--color-primary)]">{service.title}</h3>
+  <p class="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{service.homeDescription}</p>
+  <ul class="mt-4 grid gap-2 border-t border-[var(--color-border)] pt-4 text-sm leading-5 text-[var(--color-text-muted)]">
     {service.highlights.map((item) => (
       <li class="flex items-start gap-2">
-        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" class="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]">
+        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" class="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]">
           <path d="m5 10 3.2 3.2L15.5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
           <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.2" />
         </svg>
@@ -24,7 +24,7 @@ const { service, href = `/servicios#${service.id}` } = Astro.props;
       </li>
     ))}
   </ul>
-  <a href={href} class="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-bold uppercase tracking-[.12em] text-[var(--petrol)] transition-colors hover:text-[var(--gold)]">
+  <a href={href} class="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-bold uppercase tracking-[.12em] text-[var(--color-primary)] transition-colors hover:text-[var(--color-accent)]">
     Ver prestaciones <span aria-hidden="true">&#8599;</span>
   </a>
 </article>

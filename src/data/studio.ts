@@ -1,10 +1,12 @@
 export const studio = {
-  name: 'DIZAM',
-  fullName: 'DIZAM Estudio Contable',
+  name: 'Grupo Norte',
+  fullName: 'Grupo Norte | Servicios Contables e Impositivos',
   professional: 'David Miguel Díaz',
-  slogan: 'Estudio contable e impositivo',
-  description: 'Desde Córdoba, asesoramiento contable e impositivo para personas, profesionales y empresas de todo el país.',
-  siteUrl: 'https://dizam.com.ar',
+  education: 'Técnico en Gestión Contable e Impositiva',
+  educationInstitution: 'Universidad Siglo 21',
+  educationUrl: 'https://21.edu.ar/carreras-y-programas/tecnicatura-en-gestion-contable-e-impositiva',
+  slogan: 'Servicios Contables e Impositivos',
+  description: 'Soluciones contables e impositivas para personas, profesionales, emprendedores y empresas. Atención personalizada y acompañamiento en cada etapa de tu actividad.',
   contact: {
     phone: '+54 9 351 212-1778',
     email: null,

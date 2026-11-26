@@ -6,36 +6,36 @@ const isHome = Astro.url.pathname === '/';
 const home = isHome ? '' : '/';
 const links = [
   { href: `${home}#servicios`, label: 'Servicios' },
-  { href: `${home}#confianza`, label: 'Por qué DIZAM' },
-  { href: `${home}#estudio`, label: 'El estudio' },
+  { href: `${home}#monotributo`, label: 'Monotributo' },
+  { href: `${home}#estudio`, label: 'David Díaz' },
   { href: '#contacto', label: 'Contacto' },
 ];
 ---
 
-<header class="fixed left-0 right-0 top-0 z-50 border-b border-[var(--border)]/70 bg-[var(--white)]/90 backdrop-blur-md">
-  <div class="relative mx-auto flex h-[5.2rem] max-w-[1280px] items-center justify-between px-6 lg:px-10">
+<header id="site-header" class="fixed left-0 right-0 top-0 z-50 border-b border-[var(--color-border)]/70 bg-[var(--color-background)]/95 backdrop-blur-md">
+  <div class="relative mx-auto flex h-[5.8rem] max-w-[1280px] items-center justify-between px-6 lg:px-10">
     <div class="hidden lg:block">
-      <BrandLogo variant="horizontal" href={isHome ? '#inicio' : '/'} eager />
+      <BrandLogo variant="compact" class="header-logo h-[5rem] w-[7.6rem]" href={isHome ? '#inicio' : '/'} eager />
     </div>
-    <div class="absolute left-1/2 top-1/2 w-[7rem] -translate-x-1/2 -translate-y-1/2 lg:hidden">
-      <BrandLogo variant="full" class="w-full" href={isHome ? '#inicio' : '/'} eager />
+    <div class="absolute left-1/2 top-1/2 h-[5rem] w-[7.6rem] -translate-x-1/2 -translate-y-1/2 lg:hidden">
+      <BrandLogo variant="compact" class="header-logo w-full" href={isHome ? '#inicio' : '/'} eager />
     </div>
     <nav class="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
-      {links.map((link) => <a class="text-[.72rem] font-semibold text-[var(--muted)] transition-colors hover:text-[var(--petrol)]" href={link.href}>{link.label}</a>)}
+      {links.map((link) => <a class="text-[.72rem] font-semibold text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary)]" href={link.href}>{link.label}</a>)}
     </nav>
     {studio.contact.whatsapp ? (
-      <a href={studio.contact.whatsapp} target="_blank" rel="noreferrer" class="hidden items-center gap-3 bg-[var(--petrol)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--deep)] lg:inline-flex">Hablemos</a>
+      <a href={studio.contact.whatsapp} target="_blank" rel="noreferrer" class="hidden items-center gap-3 bg-[var(--color-primary)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--color-primary-dark)] lg:inline-flex">Hablemos</a>
     ) : (
-      <a href={`${home}#contacto`} class="hidden items-center gap-3 bg-[var(--petrol)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--deep)] lg:inline-flex">Hablemos</a>
+      <a href={`${home}#contacto`} class="hidden items-center gap-3 bg-[var(--color-primary)] px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-[var(--color-primary-dark)] lg:inline-flex">Hablemos</a>
     )}
-    <button id="menu-toggle" class="rounded-full p-2 text-[var(--petrol)] lg:hidden" aria-label="Abrir menú" aria-expanded="false">
+    <button id="menu-toggle" class="rounded-full p-2 text-[var(--color-primary)] lg:hidden" aria-label="Abrir menú" aria-expanded="false">
       <span class="block h-px w-6 bg-current"></span>
       <span class="mt-1.5 block h-px w-4 bg-current"></span>
     </button>
   </div>
-  <div id="mobile-menu" class="hidden border-t border-[var(--border)] bg-[var(--white)] px-6 py-5 lg:hidden">
+  <div id="mobile-menu" class="hidden border-t border-[var(--color-border)] bg-[var(--color-background)] px-6 py-5 lg:hidden">
     <nav class="grid gap-4" aria-label="Menú móvil">
-      {links.map((link) => <a class="text-lg font-semibold text-[var(--petrol)]" href={link.href}>{link.label}</a>)}
+      {links.map((link) => <a class="text-lg font-semibold text-[var(--color-primary)]" href={link.href}>{link.label}</a>)}
     </nav>
   </div>
 </header>
